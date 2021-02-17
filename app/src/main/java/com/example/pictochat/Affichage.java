@@ -47,7 +47,7 @@ public class Affichage extends AppCompatActivity {
                 last_ville.setText(ville);
                 last_departement.setText(departement);
             }
-
+// azkeazeakzjenezjkbazejkbazjke
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
 
