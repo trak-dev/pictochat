@@ -8,32 +8,33 @@ import android.view.View;
 import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
-    private Button btnadd,btnshow;
+    private Button btncreat,btnsalon;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        btnadd = (Button) findViewById(R.id.btnadd);
-        btnshow = (Button) findViewById(R.id.btnshow);
-        btnadd.setOnClickListener(new View.OnClickListener() {
+        setContentView(R.layout.activity_accueil);
+        btncreat = (Button) findViewById(R.id.btncreat);
+        btnsalon = (Button) findViewById(R.id.btnrejoindre);
+        btncreat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                openAjout();
+                openCreat();
             }
         });
-        btnshow.setOnClickListener(new View.OnClickListener() {
+        btnsalon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                openAffichage();
+                openListSalon();
             }
         });
     }
-    public void openAjout() {
-        Intent intent = new Intent(this, Ajout.class);
+    public void openCreat() {
+        Intent intent = new Intent(this,Creation_room.class);
         startActivity(intent);
     }
-    public void openAffichage() {
-        Intent intent = new Intent(this, Affichage.class);
+   public void openListSalon() {
+        Intent intent = new Intent(this,List_room.class);
         startActivity(intent);
     }
+
 }

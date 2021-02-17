@@ -1,8 +1,6 @@
 package com.example.pictochat;
 
-import java.io.Serializable;
-
-public class Member implements Serializable {
+public class Member {
     private String Nom;
     private String Prenom;
     private String Ville;
