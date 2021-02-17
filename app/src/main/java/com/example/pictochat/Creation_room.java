@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RadioButton;
 import android.widget.TextView;
 
 public class Creation_room extends AppCompatActivity {
@@ -14,29 +15,29 @@ public class Creation_room extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_creation_room);
-    }
-
-    public void hide(View view) {
 
         TextView txtView = (TextView)findViewById(R.id.textViewMdpRoom);
         EditText editText = (EditText)findViewById(R.id.editTextMdpRoom);
 
-        Button non = (Button)findViewById(R.id.radioButtonNon);
-        Button oui = (Button)findViewById(R.id.radioButtonOui);
+        RadioButton non = (RadioButton)findViewById(R.id.radioButtonNon);
+        RadioButton oui = (RadioButton)findViewById(R.id.radioButtonOui);
 
         non.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                txtView.setVisibility(View.VISIBLE);
-                editText.setVisibility(View.VISIBLE);
+                txtView.setVisibility(v.VISIBLE);
+                editText.setVisibility(v.VISIBLE);
+                oui.setChecked(false);
+
             }
         });
         oui.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                txtView.setVisibility(View.INVISIBLE);
-                editText.setVisibility(View.INVISIBLE);
+                txtView.setVisibility(v.INVISIBLE);
+                editText.setVisibility(v.INVISIBLE);
             }
         });
     }
 }
+
