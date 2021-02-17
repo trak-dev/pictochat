@@ -8,13 +8,14 @@ import android.view.View;
 import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
-    private Button btnadd,btnshow;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        btnadd = (Button) findViewById(R.id.btnadd);
-        btnshow = (Button) findViewById(R.id.btnshow);
+        Button btnadd = (Button) findViewById(R.id.btnadd);
+        Button btnshow = (Button) findViewById(R.id.btnshow);
+        Button buttonlast = (Button) findViewById(R.id.buttonlast);
         btnadd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -27,6 +28,12 @@ public class MainActivity extends AppCompatActivity {
                 openAffichage();
             }
         });
+        buttonlast.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                testLast();
+            }
+        });
     }
     public void openAjout() {
         Intent intent = new Intent(this, Ajout.class);
@@ -34,6 +41,10 @@ public class MainActivity extends AppCompatActivity {
     }
     public void openAffichage() {
         Intent intent = new Intent(this, Affichage.class);
+        startActivity(intent);
+    }
+    public void testLast() {
+        Intent intent = new Intent(this, last.class);
         startActivity(intent);
     }
 }

@@ -9,7 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Pictochat">
-        <activity android:name=".Chat"></activity>
+        <activity android:name=".last"></activity>
         <activity android:name=".Affichage" />
         <activity android:name=".Ajout" />
         <activity android:name=".MainActivity">
