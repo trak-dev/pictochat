@@ -9,9 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Pictochat">
-        <activity android:name=".last"></activity>
-        <activity android:name=".Affichage" />
-        <activity android:name=".Ajout" />
+        <activity android:name=".Chat"
+            android:windowSoftInputMode="adjustPan" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

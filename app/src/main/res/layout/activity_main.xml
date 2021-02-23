@@ -19,28 +19,7 @@
             android:id="@+id/btnadd"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Page Ajout Data" />
+            android:text="Acceder au chat" />
     </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:orientation="horizontal"
-        android:layout_gravity="center"
-        android:gravity="center">
-
-        <Button
-            android:id="@+id/btnshow"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Page Affichage Data" />
-
-        <Button
-            android:id="@+id/buttonlast"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Button" />
-    </LinearLayout>
 </LinearLayout>
