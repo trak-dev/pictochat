@@ -57,7 +57,7 @@ public class Chat extends AppCompatActivity {
         add.setOnClickListener((v) -> {
             String txt_name = edit.getText().toString();
             if (txt_name.isEmpty()){
-                Toast.makeText(Chat.this, "Champ vide", Toast.LENGTH_SHORT).show();
+                Toast.makeText(Chat.this, "Champ vide ! ", Toast.LENGTH_SHORT).show();
             }else {
                 FirebaseDatabase.getInstance().getReference().child("Member").child(String.valueOf(maxid+1)).setValue(txt_name);
                 listView.setSelection(listView.getAdapter().getCount()-1);

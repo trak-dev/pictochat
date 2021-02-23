@@ -5,8 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context=".Chat"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    tools:context=".Chat">
     <!-- test  -->
 
     <LinearLayout
@@ -14,8 +14,9 @@
         android:layout_height="600dp"
         android:layout_weight="5"
         android:orientation="horizontal"
-        android:paddingLeft="10dp"
-        android:paddingTop="10dp">
+        android:paddingStart="10dp"
+        android:paddingTop="10dp"
+        tools:ignore="RtlSymmetry">
 
         <ListView
             android:id="@+id/listView"
@@ -30,14 +31,14 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
         android:layout_weight="8"
-        android:gravity="bottom"
-        android:orientation="vertical">
+        android:gravity="bottom">
 
         <EditText
             android:id="@+id/editText"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
             android:layout_gravity="bottom"
+            android:layout_weight="5"
             android:ems="10"
             android:gravity="center"
             android:hint="Valeur à ajouter"
@@ -45,9 +46,12 @@
 
         <Button
             android:id="@+id/buttonAdd"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
             android:layout_gravity="bottom"
+            android:layout_weight="2"
+            android:ems="10"
+            android:gravity="center"
             android:text="Ajouter" />
     </LinearLayout>
 
