@@ -4,22 +4,22 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Ajout"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:layout_gravity="center"
+    android:gravity="center">
 
-    <LinearLayout
-        android:layout_width="match_parent"
+    <EditText
+        android:id="@+id/editPseudo"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:orientation="horizontal"
-        android:layout_gravity="center"
-        android:gravity="center">
+        android:ems="10"
+        android:hint="Votre pseudo"
+        android:inputType="textPersonName" />
 
-        <Button
-            android:id="@+id/btnadd"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Acceder au chat" />
-    </LinearLayout>
+    <Button
+        android:id="@+id/btnadd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Acceder au chat" />
 
 </LinearLayout>

@@ -17,6 +17,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class Chat extends AppCompatActivity {
 
@@ -28,9 +29,11 @@ public class Chat extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chat);
+        Bundle extras = getIntent().getExtras();
         edit = findViewById(R.id.editText);
         Button add = findViewById(R.id.buttonAdd);
         ListView listView = findViewById(R.id.listView);
+        String pseudo = extras.getString("key");
         ArrayList<String> list = new ArrayList<>();
         ArrayAdapter adapter = new ArrayAdapter<String>(this, R.layout.list_item, list);
         listView.setAdapter(adapter);
@@ -59,7 +62,10 @@ public class Chat extends AppCompatActivity {
             if (txt_name.isEmpty()){
                 Toast.makeText(Chat.this, "Champ vide ! ", Toast.LENGTH_SHORT).show();
             }else {
-                FirebaseDatabase.getInstance().getReference().child("Member").child(String.valueOf(maxid+1)).setValue(txt_name);
+                HashMap<String, Object> hashMap = new HashMap<>();
+                hashMap.put("Sender",pseudo);
+                hashMap.put("Message" ,txt_name);
+                FirebaseDatabase.getInstance().getReference().child("Member").child(String.valueOf(maxid+1)).setValue(hashMap);
                 listView.setSelection(listView.getAdapter().getCount()-1);
                 edit.setText("");
             }
