@@ -52,6 +52,7 @@ public class Affichage extends AppCompatActivity {
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
 
+                //test
             }
         });
 
