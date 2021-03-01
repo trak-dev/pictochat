@@ -1,9 +1,14 @@
 package com.example.pictochat;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -45,10 +50,10 @@ public class Chat extends AppCompatActivity {
                         maxid = (datasnapshot.getChildrenCount());
                     }
                     list.clear();
-                    for (DataSnapshot snapshot : datasnapshot.getChildren()){
-                        list.add(snapshot.getValue().toString());
-                        listView.setSelection(listView.getAdapter().getCount()-1);
-                    }
+                        for (int i = 1 ; i <= maxid ; i++) {
+                            list.add(datasnapshot.child(String.valueOf(i)).child("Message").getValue().toString());
+                            listView.setSelection(listView.getAdapter().getCount() - 1);
+                        }
                     adapter.notifyDataSetChanged();
                 }
 
