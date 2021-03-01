@@ -23,6 +23,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 public class Chat extends AppCompatActivity {
 
@@ -39,24 +40,30 @@ public class Chat extends AppCompatActivity {
         Button add = findViewById(R.id.buttonAdd);
         ListView listView = findViewById(R.id.listView);
         String pseudo = extras.getString("key");
-        ArrayList<String> list = new ArrayList<>();
-        ArrayAdapter adapter = new ArrayAdapter<String>(this, R.layout.list_item, list);
-        listView.setAdapter(adapter);
-            reff = FirebaseDatabase.getInstance().getReference().child("Member");
-            reff.addValueEventListener(new ValueEventListener() {
+        List<Items> itemsList = new ArrayList<>();
+        ArrayList<String> listmessage = new ArrayList<>();
+        ArrayList<String> listsenders = new ArrayList<>();
+        reff = FirebaseDatabase.getInstance().getReference().child("Member");
+        reff.addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot datasnapshot) {
                     if (datasnapshot.exists()) {
                         maxid = (datasnapshot.getChildrenCount());
                     }
-                    list.clear();
+                    listmessage.clear();
+                    listsenders.clear();
+                    itemsList.clear();
                         for (int i = 1 ; i <= maxid ; i++) {
-                            list.add(datasnapshot.child(String.valueOf(i)).child("Message").getValue().toString());
-                            listView.setSelection(listView.getAdapter().getCount() - 1);
+                            listmessage.add(datasnapshot.child(String.valueOf(i)).child("Message").getValue().toString());
+                            listsenders.add(datasnapshot.child(String.valueOf(i)).child("Sender").getValue().toString());
+                          //  listView.setSelection(listView.getAdapter().getCount() - 1);
                         }
-                    adapter.notifyDataSetChanged();
+                    for (int j = 0 ; j < maxid ; j++) {
+                        itemsList.add(new Items(""+ listmessage.get(j),""+ listsenders.get(j)));
+                    }
+                    listView.setAdapter(new ListAdapter( Chat.this,itemsList));
+                    listView.setSelection(listView.getAdapter().getCount()-1);
                 }
-
                 @Override
                 public void onCancelled(@NonNull DatabaseError error) {
 
