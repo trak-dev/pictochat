@@ -5,25 +5,38 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
-    <TextView
-        android:id="@+id/user"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="utilisateur"
-        android:textSize="12sp"
-        android:textStyle="bold"
-        android:layout_marginStart="5dp"
-        android:layout_marginTop="10dp"
-        />
-<TextView
-    android:id="@+id/message"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:padding="10dp"
-    android:text="Message"
-    android:textSize="16sp"
-    android:textStyle="bold"
-    android:background="@drawable/background"
-    android:layout_marginStart="5dp"
-    />
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/message"
+            android:layout_width="match_parent"
+            android:layout_height="200sp"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="5dp"
+            android:paddingTop="50dp"
+            android:background="@drawable/background"
+            android:padding="10dp"
+            android:text="Message"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:gravity="center_vertical"
+            android:textColor="@color/black"/>
+
+        <TextView
+            android:id="@+id/user"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginBottom="-12sp"
+            android:background="@drawable/left_user"
+            android:text="utilisateur"
+            android:textStyle="italic"
+            android:textSize="20sp"
+            android:gravity="center"
+            />
+    </FrameLayout>
+
 </LinearLayout>
