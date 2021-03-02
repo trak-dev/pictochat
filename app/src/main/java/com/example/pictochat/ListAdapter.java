@@ -1,6 +1,9 @@
 package com.example.pictochat;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
+import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -35,18 +38,30 @@ public class ListAdapter extends BaseAdapter     {
         return 0;
     }
 
+    @SuppressLint({"ViewHolder", "InflateParams"})
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        convertView = inflater.inflate(R.layout.list_item, null);
         Items currentItem = getItem(position);
         String sender = currentItem.getSender();
         String message = currentItem.getMessage();
+        String user = currentItem.getUser();
+        if (sender.equals(user)) {
+            convertView = inflater.inflate(R.layout.list_item_right, null);
+            TextView userText = convertView.findViewById(R.id.user_right);
+            userText.setText(sender);
 
-        TextView userText = convertView.findViewById(R.id.user);
-        userText.setText(sender);
+            TextView mesageText = convertView.findViewById(R.id.message_right);
+            mesageText.setText(message);
+        } else {
+            convertView = inflater.inflate(R.layout.list_item_left, null);
 
-        TextView mesageText = convertView.findViewById(R.id.message);
-        mesageText.setText(message);
+            TextView userText = convertView.findViewById(R.id.user);
+            userText.setText(sender);
+
+            TextView mesageText = convertView.findViewById(R.id.message);
+            mesageText.setText(message);
+
+        }
         return convertView;
     }
 }

@@ -56,10 +56,9 @@ public class Chat extends AppCompatActivity {
                         for (int i = 1 ; i <= maxid ; i++) {
                             listmessage.add(datasnapshot.child(String.valueOf(i)).child("Message").getValue().toString());
                             listsenders.add(datasnapshot.child(String.valueOf(i)).child("Sender").getValue().toString());
-                          //  listView.setSelection(listView.getAdapter().getCount() - 1);
                         }
                     for (int j = 0 ; j < maxid ; j++) {
-                        itemsList.add(new Items(""+ listmessage.get(j),""+ listsenders.get(j)));
+                        itemsList.add(new Items(""+ listmessage.get(j),""+ listsenders.get(j), ""+pseudo));
                     }
                     listView.setAdapter(new ListAdapter( Chat.this,itemsList));
                     listView.setSelection(listView.getAdapter().getCount()-1);
