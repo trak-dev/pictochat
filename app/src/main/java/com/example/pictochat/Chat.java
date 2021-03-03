@@ -37,13 +37,14 @@ public class Chat extends AppCompatActivity {
         setContentView(R.layout.activity_chat);
         Bundle extras = getIntent().getExtras();
         edit = findViewById(R.id.editText);
+        Button clean = findViewById(R.id.buttonclean);
         Button add = findViewById(R.id.buttonAdd);
         ListView listView = findViewById(R.id.listView);
         String pseudo = extras.getString("key");
         List<Items> itemsList = new ArrayList<>();
         ArrayList<String> listmessage = new ArrayList<>();
         ArrayList<String> listsenders = new ArrayList<>();
-        reff = FirebaseDatabase.getInstance().getReference().child("Member");
+        reff = FirebaseDatabase.getInstance().getReference().child("Member").child("Messages");
         reff.addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot datasnapshot) {
@@ -76,10 +77,13 @@ public class Chat extends AppCompatActivity {
                 HashMap<String, Object> hashMap = new HashMap<>();
                 hashMap.put("Sender",pseudo);
                 hashMap.put("Message" ,txt_name);
-                FirebaseDatabase.getInstance().getReference().child("Member").child(String.valueOf(maxid+1)).setValue(hashMap);
+                FirebaseDatabase.getInstance().getReference().child("Member").child("Messages").child(String.valueOf(maxid+1)).setValue(hashMap);
                 listView.setSelection(listView.getAdapter().getCount()-1);
                 edit.setText("");
             }
+        });
+        clean.setOnClickListener((v) -> {
+            edit.setText("");
         });
     }
 }

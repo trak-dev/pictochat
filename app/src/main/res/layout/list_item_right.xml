@@ -29,7 +29,7 @@
             android:id="@+id/user_right"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="146dp"
+            android:layout_marginStart="162dp"
             android:layout_marginBottom="-12sp"
             android:background="@drawable/right_user"
             android:text="utilisateur"

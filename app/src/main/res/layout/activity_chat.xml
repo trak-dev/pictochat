@@ -45,9 +45,11 @@
             android:ems="10"
             android:gravity="center"
             android:hint="Valeur à ajouter"
+            android:textColorHint="@color/black"
             android:inputType="textPersonName"
             tools:ignore="NestedWeights"
             android:textColor="@color/black"/>
+
 
         <LinearLayout
             android:layout_width="wrap_content"
