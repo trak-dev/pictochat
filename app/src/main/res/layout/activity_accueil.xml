@@ -24,12 +24,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="50dp"
+            android:background="@drawable/button_background"
             android:text="Créer un Salon" />
 
         <Button
             android:id="@+id/btnrejoindre"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@drawable/button_background"
             android:text="rejoindre un Salon" />
 
 
