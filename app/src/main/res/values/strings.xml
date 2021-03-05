@@ -6,4 +6,7 @@
     <string name="textView_pseudo">Pseudo : </string>
     <string name="textView_mdp">Mot de passe :</string>
     <string name="button_dialog">aller au Chat</string>
+    <string name="aller_au_chat">Aller au chat</string>
+    <string name="pseudo">Pseudo :</string>
+    <string name="choisissez_votre_pseudo">choisissez votre pseudo :</string>
 </resources>

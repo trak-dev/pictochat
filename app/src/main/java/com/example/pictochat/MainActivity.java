@@ -17,18 +17,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_accueil);
         btncreat = (Button) findViewById(R.id.btncreat);
         btnsalon = (Button) findViewById(R.id.btnrejoindre);
-        btncreat.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                openCreat();
-            }
-        });
-        btnsalon.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                openListSalon();
-            }
-        });
+        btncreat.setOnClickListener(v -> openCreat());
+        btnsalon.setOnClickListener(v -> openListSalon());
     }
     public void openCreat() {
         Intent intent = new Intent(this,Creation_room.class);
