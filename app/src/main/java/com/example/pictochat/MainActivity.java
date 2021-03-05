@@ -10,10 +10,32 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
-    private EditText pseudo;
+    private Button btncreat,btnsalon;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_accueil);
+        btncreat = (Button) findViewById(R.id.btncreat);
+        btnsalon = (Button) findViewById(R.id.btnrejoindre);
+        btncreat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openCreat();
+            }
+        });
+        btnsalon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openListSalon();
+            }
+        });
+    }
+    public void openCreat() {
+        Intent intent = new Intent(this,Creation_room.class);
+        startActivity(intent);
+    }
+   public void openListSalon() {
+        Intent intent = new Intent(this,List_room.class);
+        startActivity(intent);
     }
 }

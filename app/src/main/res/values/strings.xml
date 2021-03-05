@@ -1,4 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">pictochat</string>
+    <string name="dialog_titre">Choisir un pseudo</string>
+    <string name="dialog_titre_private_room">pseudo et Mot de Passe exigée</string>
+    <string name="textView_pseudo">Pseudo : </string>
+    <string name="textView_mdp">Mot de passe :</string>
+    <string name="button_dialog">aller au Chat</string>
 </resources>
