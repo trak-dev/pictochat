@@ -10,7 +10,6 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
-<<<<<<< HEAD
     private Button btncreat,btnsalon;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,28 +36,6 @@ public class MainActivity extends AppCompatActivity {
     }
    public void openListSalon() {
         Intent intent = new Intent(this,List_room.class);
-=======
-    private EditText pseudo;
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        Button btnadd = findViewById(R.id.btnadd);
-        pseudo = findViewById(R.id.editPseudo);
-        btnadd.setOnClickListener(v -> {
-            String pseudoValue = pseudo.getText().toString();
-            if (pseudoValue.isEmpty()){
-                Toast.makeText(MainActivity.this, "peudo invalide" + pseudoValue, Toast.LENGTH_SHORT).show();
-            } else {
-                chat();
-            }
-        });
-    }
-    public void chat() {
-        String pseudoValue = pseudo.getText().toString();
-        Intent intent = new Intent(this, Chat.class);
-        intent.putExtra("key",pseudoValue);
->>>>>>> origin/chat
         startActivity(intent);
     }
 

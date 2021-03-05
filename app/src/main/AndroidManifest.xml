@@ -9,20 +9,17 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Pictochat">
-<<<<<<< HEAD
-        <activity android:name=".List_room"></activity>
-        <activity android:name=".Creation_room" />
-        <activity android:name=".Accueil" />
-=======
-        <activity android:name=".Chat"
-            android:windowSoftInputMode="adjustPan" />
->>>>>>> origin/chat
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".List_room" />
+        <activity android:name=".Creation_room" />
+        <activity android:name=".Accueil" />
+        <activity android:name=".Chat"
+            android:windowSoftInputMode="adjustPan" />
     </application>
 
 </manifest>
