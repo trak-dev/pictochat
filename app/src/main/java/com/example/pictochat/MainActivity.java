@@ -15,21 +15,5 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Button btnadd = findViewById(R.id.btnadd);
-        pseudo = findViewById(R.id.editPseudo);
-        btnadd.setOnClickListener(v -> {
-            String pseudoValue = pseudo.getText().toString();
-            if (pseudoValue.isEmpty()){
-                Toast.makeText(MainActivity.this, "peudo invalide" + pseudoValue, Toast.LENGTH_SHORT).show();
-            } else {
-                chat();
-            }
-        });
-    }
-    public void chat() {
-        String pseudoValue = pseudo.getText().toString();
-        Intent intent = new Intent(this, Chat.class);
-        intent.putExtra("key",pseudoValue);
-        startActivity(intent);
     }
 }

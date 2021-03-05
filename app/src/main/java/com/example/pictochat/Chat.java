@@ -44,25 +44,25 @@ public class Chat extends AppCompatActivity {
         List<Items> itemsList = new ArrayList<>();
         ArrayList<String> listmessage = new ArrayList<>();
         ArrayList<String> listsenders = new ArrayList<>();
-        reff = FirebaseDatabase.getInstance().getReference().child("Member").child("Messages");
+        reff = FirebaseDatabase.getInstance().getReference().child("Room1").child("Messages");
         reff.addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot datasnapshot) {
                     if (datasnapshot.exists()) {
                         maxid = (datasnapshot.getChildrenCount());
-                    }
-                    listmessage.clear();
-                    listsenders.clear();
-                    itemsList.clear();
+                        listmessage.clear();
+                        listsenders.clear();
+                        itemsList.clear();
                         for (int i = 1 ; i <= maxid ; i++) {
                             listmessage.add(datasnapshot.child(String.valueOf(i)).child("Message").getValue().toString());
                             listsenders.add(datasnapshot.child(String.valueOf(i)).child("Sender").getValue().toString());
                         }
-                    for (int j = 0 ; j < maxid ; j++) {
-                        itemsList.add(new Items(""+ listmessage.get(j),""+ listsenders.get(j), ""+pseudo));
+                        for (int j = 0 ; j < maxid ; j++) {
+                            itemsList.add(new Items(""+ listmessage.get(j),""+ listsenders.get(j), ""+pseudo));
+                        }
+                        listView.setAdapter(new ListAdapter( Chat.this,itemsList));
+                        listView.setSelection(listView.getAdapter().getCount()-1);
                     }
-                    listView.setAdapter(new ListAdapter( Chat.this,itemsList));
-                    listView.setSelection(listView.getAdapter().getCount()-1);
                 }
                 @Override
                 public void onCancelled(@NonNull DatabaseError error) {
@@ -77,8 +77,8 @@ public class Chat extends AppCompatActivity {
                 HashMap<String, Object> hashMap = new HashMap<>();
                 hashMap.put("Sender",pseudo);
                 hashMap.put("Message" ,txt_name);
-                FirebaseDatabase.getInstance().getReference().child("Member").child("Messages").child(String.valueOf(maxid+1)).setValue(hashMap);
-                listView.setSelection(listView.getAdapter().getCount()-1);
+                FirebaseDatabase.getInstance().getReference().child("Room1").child("Messages").child(String.valueOf(maxid+1)).setValue(hashMap);
+                //listView.setSelection(listView.getAdapter().getCount()-1);
                 edit.setText("");
             }
         });
