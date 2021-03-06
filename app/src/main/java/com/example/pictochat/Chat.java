@@ -40,50 +40,51 @@ public class Chat extends AppCompatActivity {
         Button clean = findViewById(R.id.buttonclean);
         Button add = findViewById(R.id.buttonAdd);
         ListView listView = findViewById(R.id.listView);
-        String pseudo = extras.getString("key");
-        List<Items> itemsList = new ArrayList<>();
-        ArrayList<String> listmessage = new ArrayList<>();
-        ArrayList<String> listsenders = new ArrayList<>();
-        reff = FirebaseDatabase.getInstance().getReference().child("Room1").child("Messages");
+        String pseudo = extras.getString("pseudo");
+        String room = extras.getString("room");
+        List < Items > itemsList = new ArrayList < > ();
+        ArrayList < String > listmessage = new ArrayList < > ();
+        ArrayList < String > listsenders = new ArrayList < > ();
+        reff = FirebaseDatabase.getInstance().getReference().child(room).child("Messages");
         reff.addValueEventListener(new ValueEventListener() {
-                @Override
-                public void onDataChange(@NonNull DataSnapshot datasnapshot) {
-                    if (datasnapshot.exists()) {
-                        maxid = (datasnapshot.getChildrenCount());
-                        listmessage.clear();
-                        listsenders.clear();
-                        itemsList.clear();
-                        for (int i = 1 ; i <= maxid ; i++) {
-                            listmessage.add(datasnapshot.child(String.valueOf(i)).child("Message").getValue().toString());
-                            listsenders.add(datasnapshot.child(String.valueOf(i)).child("Sender").getValue().toString());
-                        }
-                        for (int j = 0 ; j < maxid ; j++) {
-                            itemsList.add(new Items(""+ listmessage.get(j),""+ listsenders.get(j), ""+pseudo));
-                        }
-                        listView.setAdapter(new ListAdapter( Chat.this,itemsList));
-                        listView.setSelection(listView.getAdapter().getCount()-1);
+            @Override
+            public void onDataChange(@NonNull DataSnapshot datasnapshot) {
+                if (datasnapshot.exists()) {
+                    maxid = (datasnapshot.getChildrenCount());
+                    listmessage.clear();
+                    listsenders.clear();
+                    itemsList.clear();
+                    for (int i = 1; i <= maxid; i++) {
+                        listmessage.add(datasnapshot.child(String.valueOf(i)).child("Message").getValue().toString());
+                        listsenders.add(datasnapshot.child(String.valueOf(i)).child("Sender").getValue().toString());
                     }
+                    for (int j = 0; j < maxid; j++) {
+                        itemsList.add(new Items("" + listmessage.get(j), "" + listsenders.get(j), "" + pseudo));
+                    }
+                    listView.setAdapter(new ListAdapter(Chat.this, itemsList));
+                    listView.setSelection(listView.getAdapter().getCount() - 1);
                 }
-                @Override
-                public void onCancelled(@NonNull DatabaseError error) {
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
 
-                }
-            });
-        add.setOnClickListener((v) -> {
-            String txt_name = edit.getText().toString();
-            if (txt_name.isEmpty()){
-                Toast.makeText(Chat.this, "Champ vide ! ", Toast.LENGTH_SHORT).show();
-            }else {
-                HashMap<String, Object> hashMap = new HashMap<>();
-                hashMap.put("Sender",pseudo);
-                hashMap.put("Message" ,txt_name);
-                FirebaseDatabase.getInstance().getReference().child("Room1").child("Messages").child(String.valueOf(maxid+1)).setValue(hashMap);
-                //listView.setSelection(listView.getAdapter().getCount()-1);
-                edit.setText("");
             }
         });
-        clean.setOnClickListener((v) -> {
+        add.setOnClickListener((v) -> {
+                String txt_name = edit.getText().toString();
+        if (txt_name.isEmpty()) {
+            Toast.makeText(Chat.this, "Champ vide ! ", Toast.LENGTH_SHORT).show();
+        } else {
+            HashMap < String, Object > hashMap = new HashMap < > ();
+            hashMap.put("Sender", pseudo);
+            hashMap.put("Message", txt_name);
+            FirebaseDatabase.getInstance().getReference().child(room).child("Messages").child(String.valueOf(maxid + 1)).setValue(hashMap);
+            //listView.setSelection(listView.getAdapter().getCount()-1);
             edit.setText("");
+        }
+        });
+        clean.setOnClickListener((v) -> {
+                edit.setText("");
         });
     }
 }
