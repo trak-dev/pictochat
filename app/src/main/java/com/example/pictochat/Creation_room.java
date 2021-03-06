@@ -1,5 +1,6 @@
 package com.example.pictochat;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -17,8 +18,11 @@ import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class Creation_room extends AppCompatActivity {
     DatabaseReference reff;
@@ -31,31 +35,60 @@ public class Creation_room extends AppCompatActivity {
         EditText password = (EditText) findViewById(R.id.editTextMdpRoom);
         RadioButton non = (RadioButton) findViewById(R.id.radioButtonNon);
         RadioButton oui = (RadioButton) findViewById(R.id.radioButtonOui);
+        reff = FirebaseDatabase.getInstance().getReference();
         password.setText("null");
 
-        non.setOnClickListener(v -> {
-                txtView.setVisibility(View.VISIBLE);
-        password.setVisibility(View.VISIBLE);
-        oui.setChecked(false);
-        password.setText("");
-        });
         oui.setOnClickListener(v -> {
-                txtView.setVisibility(View.INVISIBLE);
-        password.setVisibility(View.INVISIBLE);
-        password.setText("null");
+            txtView.setVisibility(View.VISIBLE);
+            password.setVisibility(View.VISIBLE);
+            password.setText("");
+        });
+        non.setOnClickListener(v -> {
+            txtView.setVisibility(View.INVISIBLE);
+            password.setVisibility(View.INVISIBLE);
+            password.setText("null");
+            oui.setChecked(false);
         });
 
         findViewById(R.id.buttonCreerSalon).setOnClickListener(v -> {
             if (roomName.getText().toString().isEmpty()) {
                 Toast.makeText(Creation_room.this, "Merci de saisir un nom de salle ! ", Toast.LENGTH_SHORT).show();
-            } else if (non.isChecked()) {
+            } else if (oui.isChecked()) {
                 if (password.getText().toString().isEmpty() || password.getText().toString().equals("")) {
                     Toast.makeText(Creation_room.this, "Merci de saisir un mot de passe ! ", Toast.LENGTH_SHORT).show();
                 } else {
-                    showDialog();
+                    reff.addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+                            if (snapshot.child(roomName.getText().toString()).exists()){
+                                Toast.makeText(Creation_room.this, "Cette salle existe déjà.", Toast.LENGTH_SHORT).show();
+                            }else {
+                                showDialog();
+                            }
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+
+                        }
+                    });
                 }
             } else {
-                showDialog();
+                reff.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        if (snapshot.child(roomName.getText().toString()).exists()){
+                            Toast.makeText(Creation_room.this, "Cette salle existe déjà.", Toast.LENGTH_SHORT).show();
+                        }else {
+                            showDialog();
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
             }
         });
     }
@@ -90,6 +123,7 @@ public class Creation_room extends AppCompatActivity {
         Intent intent = new Intent(this, Chat.class);
         intent.putExtra("pseudo", pseudo);
         intent.putExtra("room", room);
+
         if (!password.equals("null")) {
             FirebaseDatabase.getInstance().getReference().child(room).child("Password").setValue(password);
             FirebaseDatabase.getInstance().getReference().child(room).child("Private").setValue(1);
