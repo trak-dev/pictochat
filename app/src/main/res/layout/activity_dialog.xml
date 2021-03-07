@@ -41,7 +41,9 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/editPseudo"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/textTitreDialog" />
+            app:layout_constraintTop_toBottomOf="@id/textTitreDialog"
+            app:layout_constraintVertical_bias="0.098" />
+
         <EditText
             android:id="@+id/editPseudo"
             android:layout_width="0dp"
@@ -55,7 +57,9 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/textPseudo"
-            app:layout_constraintTop_toBottomOf="@id/textTitreDialog"/>
+            app:layout_constraintTop_toBottomOf="@id/textTitreDialog"
+            app:layout_constraintVertical_bias="0.0" />
+
         <TextView
             android:id="@+id/textMdpDialog"
             android:layout_width="0dp"
@@ -66,7 +70,7 @@
             android:layout_marginBottom="40dp"
             android:textColor="@color/black"
             android:textSize="16sp"
-            android:visibility="gone"
+            android:text="Mot de passe : "
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/editMdpDialog"
@@ -81,7 +85,6 @@
             android:layout_marginBottom="40dp"
             android:textColor="@color/black"
             android:textSize="16sp"
-            android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/textMdpDialog"

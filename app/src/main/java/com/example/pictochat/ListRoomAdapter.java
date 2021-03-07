@@ -60,12 +60,15 @@ public class ListRoomAdapter extends BaseAdapter     {
         }else {
             lock.setVisibility(View.INVISIBLE);
         }
+
         convertView.setOnClickListener(v -> {
-            Intent intent = new Intent(context, Chat.class);
-            intent.putExtra("pseudo", "random");
+            Intent intent = new Intent(context, JoinRoom.class);
             intent.putExtra("room", name);
+            intent.putExtra("status", status);
+            intent.putExtra("password", password);
             context.startActivity(intent);
         });
         return convertView;
     }
 }
+

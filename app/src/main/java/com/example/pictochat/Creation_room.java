@@ -95,17 +95,19 @@ public class Creation_room extends AppCompatActivity {
 
     private void showDialog() {
 
-        TextView txtViewMdp = (TextView) findViewById(R.id.textMdpDialog);
-        TextView roomName = (TextView) findViewById(R.id.editTextSalonName);
-        EditText editTextMdp = (EditText) findViewById(R.id.editMdpDialog);
-        EditText passwordEdit = (EditText) findViewById(R.id.editTextMdpRoom);
+        TextView roomName = findViewById(R.id.editTextSalonName);
+        EditText passwordEdit = findViewById(R.id.editTextMdpRoom);
+        TextView textMdp = findViewById(R.id.textMdpDialog);
+        EditText passwordArea = findViewById(R.id.editMdpDialog);
+        textMdp.setVisibility(View.GONE);
+        passwordArea.setVisibility(View.GONE);
         String password = passwordEdit.getText().toString();
         String room = roomName.getText().toString();
 
         AlertDialog.Builder builder = new AlertDialog.Builder(Creation_room.this, R.style.AlertDialogTheme);
         View view = LayoutInflater.from(Creation_room.this).inflate(
                 R.layout.activity_dialog,
-                (ConstraintLayout) findViewById(R.id.layoutDialogContainer)
+                findViewById(R.id.layoutDialogContainer)
         );
         builder.setView(view);
         AlertDialog alertDialog = builder.create();
@@ -115,8 +117,7 @@ public class Creation_room extends AppCompatActivity {
         }
 
         alertDialog.show();
-        EditText editPseudo = (EditText) view.findViewById(R.id.editPseudo);
-        String pseudo = editPseudo.getText().toString();
+        EditText editPseudo = view.findViewById(R.id.editPseudo);
         view.findViewById(R.id.buttonDialog).setOnClickListener(v -> goToChat(editPseudo.getText().toString(), password, room));
     }
     public void goToChat(String pseudo, String password, String room) {
