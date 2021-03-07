@@ -79,7 +79,6 @@ public class Chat extends AppCompatActivity {
             hashMap.put("Sender", pseudo);
             hashMap.put("Message", txt_name);
             FirebaseDatabase.getInstance().getReference().child(room).child("Messages").child(String.valueOf(maxid + 1)).setValue(hashMap);
-            //listView.setSelection(listView.getAdapter().getCount()-1);
             edit.setText("");
         }
         });
