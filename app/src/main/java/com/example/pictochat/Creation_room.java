@@ -97,10 +97,6 @@ public class Creation_room extends AppCompatActivity {
 
         TextView roomName = findViewById(R.id.editTextSalonName);
         EditText passwordEdit = findViewById(R.id.editTextMdpRoom);
-        TextView textMdp = findViewById(R.id.textMdpDialog);
-        EditText passwordArea = findViewById(R.id.editMdpDialog);
-        textMdp.setVisibility(View.GONE);
-        passwordArea.setVisibility(View.GONE);
         String password = passwordEdit.getText().toString();
         String room = roomName.getText().toString();
 
@@ -117,6 +113,10 @@ public class Creation_room extends AppCompatActivity {
         }
 
         alertDialog.show();
+        TextView textMdp = view.findViewById(R.id.textMdpDialog);
+        EditText passwordArea = view.findViewById(R.id.editMdpDialog);
+        textMdp.setVisibility(View.GONE);
+        passwordArea.setVisibility(View.GONE);
         EditText editPseudo = view.findViewById(R.id.editPseudo);
         view.findViewById(R.id.buttonDialog).setOnClickListener(v -> goToChat(editPseudo.getText().toString(), password, room));
     }

@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -37,8 +38,8 @@ public class Chat extends AppCompatActivity {
         setContentView(R.layout.activity_chat);
         Bundle extras = getIntent().getExtras();
         edit = findViewById(R.id.editText);
-        Button clean = findViewById(R.id.buttonclean);
-        Button add = findViewById(R.id.buttonAdd);
+        ImageView clean = findViewById(R.id.buttonclean);
+        ImageView add = findViewById(R.id.buttonAdd);
         ListView listView = findViewById(R.id.listView);
         String pseudo = extras.getString("pseudo");
         String room = extras.getString("room");

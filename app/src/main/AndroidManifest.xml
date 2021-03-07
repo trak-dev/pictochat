@@ -20,7 +20,7 @@
         <activity android:name=".Accueil" />
         <activity android:name=".JoinRoom" />
         <activity android:name=".Chat"
-            android:windowSoftInputMode="adjustPan" />
+            android:windowSoftInputMode="adjustResize|stateHidden" />
     </application>
 
 </manifest>

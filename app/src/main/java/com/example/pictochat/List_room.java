@@ -3,8 +3,10 @@ package com.example.pictochat;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -25,6 +27,7 @@ public class List_room extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_room);
         ListView listView = findViewById(R.id.listRoom);
+        Button retour = findViewById(R.id.button2);
         ArrayList < String > listRooms = new ArrayList<>();
         ArrayList < Integer > liststatus = new ArrayList<>();
         ArrayList < String > listpassword = new ArrayList<>();
@@ -32,6 +35,7 @@ public class List_room extends AppCompatActivity {
         List < Room > itemsList = new ArrayList < > ();
         reff = FirebaseDatabase.getInstance().getReference();
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(List_room.this, android.R.layout.simple_list_item_1, listRooms);
+        retour.setOnClickListener(v -> back());
         reff.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -61,5 +65,9 @@ public class List_room extends AppCompatActivity {
             }
         });
         listView.setAdapter(arrayAdapter);
+    }
+    private void back() {
+        Intent intent = new Intent(this,MainActivity.class);
+        startActivity(intent);
     }
 }
