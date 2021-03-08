@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@color/white"
     tools:context=".MainActivity">
 
 
@@ -13,26 +14,69 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginLeft="100dp"
-        android:layout_marginRight="100dp"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp"
         android:gravity="center"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:weightSum="10">
 
 
-        <Button
-            android:id="@+id/btncreat"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="50dp"
-            android:background="@drawable/button_background"
-            android:text="Créer un Salon" />
+            android:layout_height="0dp"
+            android:orientation="horizontal"
+            android:layout_weight="2">
 
-        <Button
-            android:id="@+id/btnrejoindre"
+            <ImageView
+                android:id="@+id/imageView3"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                app:srcCompat="@drawable/pictochat"
+                tools:ignore="NestedWeights" />
+        </LinearLayout>
+
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/button_background"
-            android:text="rejoindre un Salon" />
+            android:layout_height="0dp"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:layout_weight="6">
+
+            <Button
+                android:id="@+id/btncreat"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                style="?attr/materialButtonOutlinedStyle"
+                android:textColor="@color/black"
+                app:strokeColor="@color/black"
+                android:text="Créer un Salon" />
+
+            <Button
+                android:id="@+id/btnrejoindre"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="?attr/materialButtonOutlinedStyle"
+                android:layout_margin="20dp"
+                app:strokeColor="@color/black"
+                android:textColor="@color/black"
+                android:text="rejoindre un Salon" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:orientation="vertical"
+            android:layout_weight="2"
+            android:gravity="center">
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="130dp"
+                android:layout_height="120dp"
+                app:srcCompat="@drawable/logo_pictochat" />
+        </LinearLayout>
 
 
     </LinearLayout>

@@ -41,7 +41,7 @@
             android:layout_gravity="start"
             android:layout_weight="2"
             android:gravity="center"
-            android:hint="Valeur à ajouter"
+            android:hint="Votre message"
             android:inputType="textPersonName"
             android:textColor="@color/black"
             android:background="@drawable/background"
