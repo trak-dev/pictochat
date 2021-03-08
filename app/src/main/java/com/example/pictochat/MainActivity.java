@@ -15,8 +15,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_accueil);
-        btncreat = (Button) findViewById(R.id.btncreat);
-        btnsalon = (Button) findViewById(R.id.btnrejoindre);
+        btncreat = findViewById(R.id.btncreat);
+        btnsalon = findViewById(R.id.btnrejoindre);
         btncreat.setOnClickListener(v -> openCreat());
         btnsalon.setOnClickListener(v -> openListSalon());
     }

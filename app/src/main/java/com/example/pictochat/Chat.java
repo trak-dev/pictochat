@@ -26,7 +26,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-public class Chat extends AppCompatActivity {
+public class Chat extends AppCompatActivity  {
 
     private EditText edit;
     long maxid;
@@ -83,8 +83,6 @@ public class Chat extends AppCompatActivity {
             edit.setText("");
         }
         });
-        clean.setOnClickListener((v) -> {
-                edit.setText("");
-        });
+        clean.setOnClickListener((v) -> edit.setText(""));
     }
 }

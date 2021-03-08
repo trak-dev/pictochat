@@ -30,11 +30,11 @@ public class Creation_room extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_creation_room);
-        TextView roomName = (TextView) findViewById(R.id.editTextSalonName);
-        TextView txtView = (TextView) findViewById(R.id.textViewMdpRoom);
-        EditText password = (EditText) findViewById(R.id.editTextMdpRoom);
-        RadioButton non = (RadioButton) findViewById(R.id.radioButtonNon);
-        RadioButton oui = (RadioButton) findViewById(R.id.radioButtonOui);
+        TextView roomName = findViewById(R.id.editTextSalonName);
+        TextView txtView = findViewById(R.id.textViewMdpRoom);
+        EditText password = findViewById(R.id.editTextMdpRoom);
+        RadioButton non = findViewById(R.id.radioButtonNon);
+        RadioButton oui = findViewById(R.id.radioButtonOui);
         reff = FirebaseDatabase.getInstance().getReference();
         password.setText("null");
 
