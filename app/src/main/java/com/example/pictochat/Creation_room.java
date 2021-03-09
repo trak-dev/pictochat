@@ -118,7 +118,14 @@ public class Creation_room extends AppCompatActivity {
         textMdp.setVisibility(View.GONE);
         passwordArea.setVisibility(View.GONE);
         EditText editPseudo = view.findViewById(R.id.editPseudo);
-        view.findViewById(R.id.buttonDialog).setOnClickListener(v -> goToChat(editPseudo.getText().toString(), password, room));
+        view.findViewById(R.id.buttonDialog).setOnClickListener(v -> {
+            if (editPseudo.getText().toString().isEmpty()){
+                Toast.makeText(Creation_room.this, "Veuillez saisir un pseudo.", Toast.LENGTH_SHORT).show();
+            }else {
+                goToChat(editPseudo.getText().toString(), password, room);
+            }
+
+        });
     }
     public void goToChat(String pseudo, String password, String room) {
         Intent intent = new Intent(this, Chat.class);
